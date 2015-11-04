@@ -50,7 +50,6 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin
 export PATH=$PATH:/home/jorgen/bin
-export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
 
 #alias ls='ls --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
 #alias ll='ls -l --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
@@ -68,3 +67,7 @@ compdef kdesu=sudo
 export EDITOR=vim
 export VISUAL=vim
 alias vi=vim
+
+#postgres aliases
+alias pgs='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
+alias pgq='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
