@@ -72,3 +72,12 @@ alias vi=vim
 alias pgs='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 alias pgq='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 alias pgstat='pg_ctl -D /usr/local/var/postgres status'
+
+# my favourite git alias
+function grbb() {
+    if [[ “$#” == 0 ]]; then
+        git rebase -i $(git merge-base HEAD master)
+    else
+        git rebase -i $(git merge-base HEAD $1)
+    fi
+}
