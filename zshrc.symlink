@@ -60,7 +60,7 @@ alias vi=vim
 # my favourite git alias
 function grbb() {
     if [[ “$#” == 0 ]]; then
-        git rebase -i $(git merge-base HEAD master)
+        git rebase -i $(git merge-base HEAD develop)
     else
         git rebase -i $(git merge-base HEAD $1)
     fi
