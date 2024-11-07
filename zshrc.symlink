@@ -57,7 +57,9 @@ export EDITOR=vim
 export VISUAL=vim
 alias vi=vim
 
-# my favourite git alias
+# git stuff
+
+# start an interactive rebase to $1 if it's provided, otherwise `main`
 function grbb() {
     if [[ "$#" == 0 ]]; then
         git rebase -i $(git merge-base HEAD main)
