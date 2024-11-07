@@ -67,3 +67,6 @@ function grbb() {
         git rebase -i $(git merge-base HEAD $1)
     fi
 }
+
+# delete all branches fully merged to $1 if it's provided, defaults to `main`
+alias gmerged='function _gmerged() { local branch="${1:-main}"; git branch --merged "$branch" | grep -v "^\*" | grep -v " $branch$" | xargs -r git branch -d; }; _gmerged'
