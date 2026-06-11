@@ -1,0 +1,13 @@
+brew "chezmoi"
+brew "gh"
+brew "starship"
+brew "zoxide"
+brew "fzf"
+brew "eza"
+brew "ripgrep"
+brew "bat"
+brew "fd"
+brew "direnv"
+brew "git-delta"
+
+cask "ghostty"

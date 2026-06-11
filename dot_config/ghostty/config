@@ -1,0 +1,4 @@
+# Quick terminal.
+keybind = global:alt+space=toggle_quick_terminal
+
+# Keep the rest close to Ghostty defaults.

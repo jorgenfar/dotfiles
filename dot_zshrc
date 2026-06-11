@@ -1,0 +1,43 @@
+# Lean interactive zsh setup managed by chezmoi.
+
+export HISTFILE="${ZDOTDIR:-$HOME}/.zsh_history"
+export HISTSIZE=50000
+export SAVEHIST=50000
+
+setopt append_history
+setopt share_history
+setopt hist_ignore_dups
+setopt hist_ignore_space
+setopt auto_cd
+setopt interactive_comments
+
+typeset -U path PATH
+
+if [[ -d /opt/homebrew/bin ]]; then
+  path=(/opt/homebrew/bin /opt/homebrew/sbin $path)
+elif [[ -d /usr/local/bin ]]; then
+  path=(/usr/local/bin /usr/local/sbin $path)
+fi
+
+[[ -d "$HOME/.local/bin" ]] && path=("$HOME/.local/bin" $path)
+[[ -d "$HOME/bin" ]] && path=("$HOME/bin" $path)
+export PATH
+
+autoload -Uz compinit
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+compinit
+
+for zsh_file in "${XDG_CONFIG_HOME:-$HOME/.config}"/zsh/*.zsh(N); do
+  source "$zsh_file"
+done
+
+command -v direnv >/dev/null 2>&1 && eval "$(direnv hook zsh)"
+command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init zsh)"
+
+if [[ -t 0 && -t 1 ]]; then
+  command -v fzf >/dev/null 2>&1 && source <(fzf --zsh)
+fi
+
+if [[ -t 1 && "${TERM:-}" != "dumb" ]]; then
+  command -v starship >/dev/null 2>&1 && eval "$(starship init zsh)"
+fi
