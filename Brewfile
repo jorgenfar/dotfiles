@@ -11,3 +11,4 @@ brew "direnv"
 brew "git-delta"
 
 cask "ghostty"
+cask "visual-studio-code"
