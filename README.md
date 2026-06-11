@@ -18,6 +18,13 @@ Install Homebrew from https://brew.sh, then from this repo:
 
 The bootstrap script installs `chezmoi` if Homebrew is available, runs `brew bundle`, shows the chezmoi diff, and asks before applying files into `$HOME`.
 
+Set Git identity in the unmanaged local include:
+
+```sh
+git config --file ~/.config/git/user user.name "Your Name"
+git config --file ~/.config/git/user user.email "you@example.com"
+```
+
 ## Daily commands
 
 ```sh
@@ -38,7 +45,7 @@ brew bundle --file "$(chezmoi source-path)/Brewfile"
 | `dot_config/zsh/*.zsh` | Small zsh fragments that can grow deliberately |
 | `dot_config/ghostty/config` | Ghostty config, starting with the quick terminal hotkey |
 | `dot_config/starship.toml` | Minimal prompt config |
-| `dot_config/git/config` | Global Git defaults without personal identity |
+| `dot_config/git/config` | Global Git defaults with an unmanaged local identity include |
 
 ## Current defaults
 
