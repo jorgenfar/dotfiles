@@ -1,5 +1,6 @@
 brew "chezmoi"
 brew "gh"
+brew "just"
 brew "starship"
 brew "zoxide"
 brew "fzf"
