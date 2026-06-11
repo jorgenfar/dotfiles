@@ -11,12 +11,18 @@ setopt hist_ignore_space
 setopt auto_cd
 setopt interactive_comments
 
-typeset -U path PATH
+typeset -U path PATH fpath FPATH
 
 if [[ -d /opt/homebrew/bin ]]; then
   path=(/opt/homebrew/bin /opt/homebrew/sbin $path)
 elif [[ -d /usr/local/bin ]]; then
   path=(/usr/local/bin /usr/local/sbin $path)
+fi
+
+if [[ -d /opt/homebrew/share/zsh/site-functions ]]; then
+  fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
+elif [[ -d /usr/local/share/zsh/site-functions ]]; then
+  fpath=(/usr/local/share/zsh/site-functions $fpath)
 fi
 
 [[ -d "$HOME/.local/bin" ]] && path=("$HOME/.local/bin" $path)
