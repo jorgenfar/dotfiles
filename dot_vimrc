@@ -1,0 +1,36 @@
+" Minimal Vim setup for Git commit and rebase editing.
+
+set nocompatible
+filetype plugin indent on
+syntax enable
+
+" Let Ghostty's terminal palette drive Vim's colors.
+set background=dark
+
+set number
+set cursorline
+set ruler
+set showcmd
+set wildmenu
+set laststatus=2
+set statusline=%f%m%r%h%w\ [%{&filetype}]\ %=line\ %l/%L\ col\ %c
+set scrolloff=4
+set sidescrolloff=8
+set splitbelow
+set splitright
+set nowrap
+
+set incsearch
+set hlsearch
+set ignorecase
+set smartcase
+
+set tabstop=2
+set shiftwidth=2
+set expandtab
+
+augroup dotfiles_git
+  autocmd!
+  autocmd FileType gitcommit setlocal textwidth=72 colorcolumn=73 wrap linebreak
+  autocmd FileType gitrebase setlocal nowrap
+augroup END

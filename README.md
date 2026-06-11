@@ -34,6 +34,7 @@ brew bundle --file "$(chezmoi source-path)/Brewfile"
 | `Brewfile` | Homebrew apps and CLI tools for a new Mac |
 | `dot_zshenv` | Tiny shell environment shared by zsh sessions |
 | `dot_zshrc` | Lean interactive zsh setup |
+| `dot_vimrc` | Minimal Vim config for Git commit and rebase editing |
 | `dot_config/zsh/*.zsh` | Small zsh fragments that can grow deliberately |
 | `dot_config/ghostty/config` | Ghostty config, starting with the quick terminal hotkey |
 | `dot_config/starship.toml` | Minimal prompt config |
@@ -44,6 +45,7 @@ brew bundle --file "$(chezmoi source-path)/Brewfile"
 - Terminal: Ghostty
 - Quick terminal hotkey: `alt+space`
 - Shell: zsh
+- Editor: Vim
 - Prompt: Starship
 - Navigation: zoxide and fzf
 - File/search tools: eza, ripgrep, bat, fd
