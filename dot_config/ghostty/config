@@ -2,6 +2,10 @@
 keybind = global:alt+space=toggle_quick_terminal
 
 # Splits.
+keybind = super+d=new_split:right
+keybind = chain=equalize_splits
+keybind = super+shift+d=new_split:down
+keybind = chain=equalize_splits
 keybind = ctrl+tab=goto_split:next
 keybind = ctrl+shift+tab=goto_split:previous
 
