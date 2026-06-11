@@ -1,4 +1,8 @@
 # Quick terminal.
 keybind = global:alt+space=toggle_quick_terminal
 
+# Splits.
+keybind = ctrl+tab=goto_split:next
+keybind = ctrl+shift+tab=goto_split:previous
+
 # Keep the rest close to Ghostty defaults.
