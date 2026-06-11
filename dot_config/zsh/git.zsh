@@ -430,6 +430,34 @@ for old_name new_name (
 done
 unset old_name new_name
 
+# Custom git helpers, not from oh-my-zsh.
+#
+# Start an interactive rebase from the merge-base with the given branch.
+# Defaults to the repository's main branch when no branch is supplied.
+function grbb() {
+  local base="${1:-$(git_main_branch 2>/dev/null || echo main)}"
+  local merge_base
+
+  merge_base="$(command git merge-base HEAD "$base")" || return
+  command git rebase --interactive "$merge_base"
+}
+
+# Delete local branches fully merged into the given branch.
+# Defaults to the repository's main branch when no branch is supplied.
+function gmerged() {
+  local base="${1:-$(git_main_branch 2>/dev/null || echo main)}"
+  local current branch
+
+  current="$(git_current_branch 2>/dev/null)"
+  command git rev-parse --verify --quiet "$base" >/dev/null || return
+
+  command git branch --format='%(refname:short)' --merged "$base" |
+    while read -r branch; do
+      [[ -z "$branch" || "$branch" == "$current" || "$branch" == "$base" ]] && continue
+      command git branch --delete "$branch"
+    done
+}
+
 # When using this plugin outside oh-my-zsh, explicitly attach git completion
 # services to aliases that resolve directly to git subcommands.
 if (( $+functions[compdef] )); then
@@ -454,6 +482,8 @@ if (( $+functions[compdef] )); then
   compdef _git ggp=git-push ggf=git-push ggfl=git-push ggpush=git-push ggpnp=git-push
   compdef _git gstu=git-stash
   compdef _git gtl=git-tag
+  compdef _git grbb=git-rebase
+  compdef _git gmerged=git-branch
 
   unset _git_alias _git_command _git_words _git_subcommand
 fi
