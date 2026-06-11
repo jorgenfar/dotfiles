@@ -1,5 +1,9 @@
+theme = Xcode Dark hc
+background-opacity = 0.9
+
 # Quick terminal.
 keybind = global:alt+space=toggle_quick_terminal
+quick-terminal-size = 50%
 
 # Splits.
 keybind = super+d=new_split:right
